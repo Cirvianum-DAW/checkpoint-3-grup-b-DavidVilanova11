@@ -26,9 +26,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
   products.forEach((product) => {
     const option = document.createElement("option");
     option.text = product.name;
-    option.value = product.category;
+    option.value = product.name;
     selectElement.appendChild(option);
   });
 });
 
-document.addEventListener.;
+selectElement.addEventListener("change", (e) => {
+  quantityInput.value = 1;
+
+  console.log(selectElement.value);
+  products.forEach((product) => {
+    if (product.name == selectElement.value) {
+      priceInput.value = product.price;
+      return;
+    }
+  });
+});
