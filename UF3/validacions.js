@@ -4,6 +4,30 @@
 const nameInput = document.querySelector("#name");
 const cognomInput = document.querySelector('input[name="surname"]');
 const emailInput = document.querySelector('input[name="email"]');
+const edatInput = document.querySelector('input[name="age"]');
+const genderInput = document.querySelector('input[name="gender"]');
+const messageInput = document.querySelector('textarea[name="message"]');
+
+nameInput.addEventListener("input", (e) => {
+  if (nameInput.value.length < 3 || nameInput.value.length > 50) {
+    displayError(
+      nameInput,
+      "Els camp nom ha de tenir una llaragada entre 3 i 50 caràcters."
+    );
+    return;
+  }
+});
+
+cognomInput.addEventListener("focus", (e) => {
+  if (cognomInput.value.length < 3 || cognomInput.value.length > 50) {
+    displayError(
+      cognomInput,
+      "Els camp cognom ha de tenir una llaragade entre 3 i 50 caràcters."
+    );
+    return;
+  }
+  return;
+});
 
 document.getElementById("formulari").addEventListener("submit", (e) => {
   e.preventDefault();
@@ -11,31 +35,6 @@ document.getElementById("formulari").addEventListener("submit", (e) => {
 });
 
 function validarCamps() {
-  const nameInput = document.querySelector("#name");
-  const cognomInput = document.querySelector('input[name="surname"]');
-  const emailInput = document.querySelector('input[name="email"]');
-  const edatInput = document.querySelector('input[name="age"]');
-  const genderInput = document.querySelector('input[name="gender"]');
-  const messageInput = document.querySelector('textarea[name="message"]');
-
-  console.log(nameInput.value);
-  if (nameInput.value.length < 3 || nameInput.value.length > 50) {
-    // displayError('Els camps Nom i cognom han de tenir una llaragade entre 3 i 50 caràcters.');
-    displayError(
-      nameInput,
-      "Els camp nom ha de tenir una llaragada entre 3 i 50 caràcters."
-    );
-    return;
-  }
-  if (cognomInput.value.length < 3 || cognomInput.value.length > 50) {
-    // displayError('Els camps Nom i cognom han de tenir una llaragade entre 3 i 50 caràcters.');
-    displayError(
-      cognomInput,
-      "Els camp cognom ha de tenir una llaragade entre 3 i 50 caràcters."
-    );
-    return;
-  }
-
   let exp = /[0-9]/;
   let result = exp.test(nameInput.value);
 

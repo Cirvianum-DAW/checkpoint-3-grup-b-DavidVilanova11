@@ -15,6 +15,7 @@ const form = document.getElementById("formulari");
 const selectElement = document.getElementById("product");
 const quantityInput = document.getElementById("quantity");
 const priceInput = document.getElementById("price");
+const addButton = document.getElementById("add-button");
 
 document.addEventListener("DOMContentLoaded", (event) => {
   const form = document.getElementById("formulari");
@@ -41,4 +42,9 @@ selectElement.addEventListener("change", (e) => {
       return;
     }
   });
+});
+
+addButton.addEventListener("click", (event) => {
+  
+
 });
