@@ -20,7 +20,8 @@ async function getPokemon(id = 0, name = "") {
 
 async function showPokemon(id) {
   try {
-    const pokemon = await getPokemon(2); // id
+    console.log(id);
+    const pokemon = await getPokemon(id); // id
 
     // console.log(pokemon.abilities);
 
@@ -63,5 +64,5 @@ async function getAbility(url) {
 }
 
 idInput.addEventListener("input", (e) => {
-  showPokemon(e);
+  showPokemon(idInput.value);
 });
