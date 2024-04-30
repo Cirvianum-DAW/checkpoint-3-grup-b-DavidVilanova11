@@ -15,7 +15,8 @@ const form = document.getElementById("formulari");
 const selectElement = document.getElementById("product");
 const quantityInput = document.getElementById("quantity");
 const priceInput = document.getElementById("price");
-const addButton = document.getElementById("add-button");
+const addButton = document.getElementById("add-product");
+const llista = document.querySelector("ul");
 
 document.addEventListener("DOMContentLoaded", (event) => {
   const form = document.getElementById("formulari");
@@ -35,7 +36,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 selectElement.addEventListener("change", (e) => {
   quantityInput.value = 1;
 
-  console.log(selectElement.value);
   products.forEach((product) => {
     if (product.name == selectElement.value) {
       priceInput.value = product.price;
@@ -45,6 +45,11 @@ selectElement.addEventListener("change", (e) => {
 });
 
 addButton.addEventListener("click", (event) => {
-  
-
+  console.log(selectElement.value);
+  products.forEach((product) => {
+    if (product.name == selectElement.value) {
+      let preuTotal = product.price * quantityInput.value;
+      llista.innerHTML += `<li>${product.name} ${preuTotal}€</li>`;
+    }
+  });
 });
