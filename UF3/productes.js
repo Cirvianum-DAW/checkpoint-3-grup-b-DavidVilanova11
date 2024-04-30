@@ -10,3 +10,16 @@ const products = [
   { category: "Llar", price: 79.99, name: "Torradora" },
   { category: "Llar", price: 199.99, name: "Aspiradora" },
 ];
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  const form = document.getElementById("formulari");
+  const selectElement = document.getElementById("product");
+
+  // Afegir les pel·lícules al selector
+  products.forEach((product) => {
+    const option = document.createElement("option");
+    option.text = product.category;
+    option.value = product.id;
+    selectElement.appendChild(option);
+  });
+});

@@ -3,26 +3,74 @@
 // Selecció dels inputs...
 const nameInput = document.querySelector("#name");
 const cognomInput = document.querySelector('input[name="surname"]');
+const emailInput = document.querySelector('input[name="email"]');
 
 document.getElementById("formulari").addEventListener("submit", (e) => {
   e.preventDefault();
-  validarNomICognom();
+  validarCamps();
 });
 
-function validarNomICognom() {
+function validarCamps() {
   const nameInput = document.querySelector("#name");
   const cognomInput = document.querySelector('input[name="surname"]');
+  const emailInput = document.querySelector('input[name="email"]');
+  const edatInput = document.querySelector('input[name="age"]');
+  const genderInput = document.querySelector('input[name="gender"]');
+  const messageInput = document.querySelector('textarea[name="message"]');
+
   console.log(nameInput.value);
-  if (
-    nameInput.value.length < 3 ||
-    nameInput.value.length > 50 ||
-    cognomInput.value.length < 3 ||
-    cognomInput.value.length > 50
-  ) {
+  if (nameInput.value.length < 3 || nameInput.value.length > 50) {
     // displayError('Els camps Nom i cognom han de tenir una llaragade entre 3 i 50 caràcters.');
-    alert(
-      "Els camps Nom i cognom han de tenir una llaragade entre 3 i 50 caràcters."
+    displayError(
+      nameInput,
+      "Els camp nom ha de tenir una llaragada entre 3 i 50 caràcters."
     );
+    return;
+  }
+  if (cognomInput.value.length < 3 || cognomInput.value.length > 50) {
+    // displayError('Els camps Nom i cognom han de tenir una llaragade entre 3 i 50 caràcters.');
+    displayError(
+      cognomInput,
+      "Els camp cognom ha de tenir una llaragade entre 3 i 50 caràcters."
+    );
+    return;
+  }
+
+  let exp = /[0-9]/;
+  let result = exp.test(nameInput.value);
+
+  if (result) {
+    displayError(nameInput, "El nom no pot contenir valors numèrics.");
+    return;
+  }
+
+  result = exp.test(cognomInput.value);
+
+  if (result) {
+    displayError(cognomInput, "El cognom no pot contenir valors numèrics.");
+    return;
+  }
+
+  result = exp.test(cognomInput.value);
+
+  exp = /^[^@]+@[^@]+\.[^@]+$/;
+  result = exp.test(emailInput.value);
+
+  if (!result) {
+    displayError(emailInput, "Ha de ser un format de correu vàlid.");
+    return;
+  }
+
+  if (edatInput.value < 18) {
+    alert("Has de ser major d'edat.");
+    return;
+  }
+
+  console.log(messageInput.value.length);
+
+  if (messageInput.value.length < 10 || messageInput.value.length > 200) {
+    alert("El missatge ha de contenir entre 10 i 200 caràcters."); // alert perwupe no és input
+    return;
   }
 }
 
